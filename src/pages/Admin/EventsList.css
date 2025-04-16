@@ -1,0 +1,159 @@
+.container {
+  display: flex;
+  position: relative;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #fff;
+  border-right: 1px solid #e6e6e6;
+  padding: 20px 0;
+  height: 100vh;
+  position: fixed;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.main-content {
+  margin-left: 220px;
+  padding: 30px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  top: 70px;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: 80px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #0070f3;
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #6c757d;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar li.active,
+.sidebar li:hover {
+  color: #0070f3;
+  font-weight: 500;
+}
+
+.profile {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.events-list-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 05px;
+  width: 100%;
+}
+
+.events-list-container h1 {
+  font-size: 28px;
+  width: 245px;
+  height: 60px;
+  color: #333;
+  margin-bottom: 0; 
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 0; 
+}
+
+.hamburger-button {
+  width: 34px;
+  height: 34px;
+  background-color: #FFFFFF;
+  color:black;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 4px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.create-event-btn{
+  margin-left: 20px;
+  width: 240px;
+  height: 48px;
+  background-color: #0062FF;
+  color: #FFFFFF;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+    top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 15px 0;
+  }
+
+  .logo {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar li {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .events-list-container h1 {
+    font-size: 22px;
+  }
+}
+
+

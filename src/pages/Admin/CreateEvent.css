@@ -1,0 +1,57 @@
+.main-wrapper {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* Content area styles */
+.content-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  height: 100%;
+  background-color: #f9f9f9;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.time-grid {
+  display: flex;
+  gap: 10px;
+}
+
+.preview-img {
+  margin: 10px 0;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.next-btn {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

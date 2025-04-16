@@ -1,0 +1,190 @@
+.event-card {
+    width: 252px;
+    height: 369px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .event-image {
+    position: relative;
+  }
+  
+  .image {
+    height: 120px;
+    object-fit: cover;
+  }
+  
+  .top-right-menu {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  
+  .menu-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .popup-menu {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    width: 120px;
+    padding: 6px 0;
+  }
+  
+  .menu-item {
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .menu-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .menu-item.delete {
+    color: #d11a2a;
+  }
+  
+  .menu-icon {
+    margin-right: 8px;
+  }
+  
+  .event-content {
+    padding: 12px;
+  }
+  
+  .date-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .event-date {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .view-button {
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    width: 90px;
+    height: 36px;
+    padding: 10px 2px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .event-title {
+    font-size: 20px;
+    font-weight: semi-bold;
+    margin: 8px 0 6px;
+    color: #222;
+  }
+  
+  .event-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .event-stats strong {
+    font-size: 14px;
+    display: block;
+    color: #222;
+  }
+
+  .status-edit-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .edit-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .edit-button:hover {
+    color: #007bff;
+  }  
+  
+  .view-event-page-button {
+    width: 100%;
+    background-color: #0066ff;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 8px 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 227px;
+    height: 26px;
+  }
+  
+  .options-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .options-icon {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    z-index: 10;
+    width: 120px;
+  }
+  
+  .dropdown-item {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .dropdown-item .icon {
+    font-size: 16px;
+  }
+  
