@@ -33,7 +33,13 @@ function LandingPage() {
     fetchEvent();
   }, [eventId]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return (
+    <div className="loader-container">
+      <div className="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  );
+
   if (!eventData) return <p>Event not found.</p>;
 
   return (
