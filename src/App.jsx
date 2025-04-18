@@ -15,8 +15,6 @@ function App() {
         {/* Protected Admin Routes */}
         <Route path="/:eventId" element={<LandingPage />} />
         <Route path="/create-event" element={<ProtectedRoute><CreateEvent /></ProtectedRoute>} />
-
-        {/* Fallback Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
