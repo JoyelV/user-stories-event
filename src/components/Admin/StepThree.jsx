@@ -9,7 +9,6 @@ import "./styles/StepThree.css";
 const apiUrl = import.meta.env.VITE_BACKEND_URL;
 const cloudinaryUrl = import.meta.env.VITE_CLOUDINARY_URL;
 
-
 const StepThree = () => {
   const [tickets, setTickets] = useState([]);
   const [showModal, setShowModal] = useState(false);
