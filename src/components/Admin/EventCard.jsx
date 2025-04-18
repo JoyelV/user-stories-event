@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiMoreVertical, FiEdit, FiTrash2 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import "./styles/EventCard.css";
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
 const EventCard = () => {
   const [showDropdownId, setShowDropdownId] = useState(null);
@@ -11,7 +12,7 @@ const EventCard = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/events");
+        const res = await fetch(`${apiUrl}/api/events`);
         const data = await res.json();
         setEvents(data);
       } catch (error) {

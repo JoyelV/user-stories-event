@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './landingPage.css';
 
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
+
 function LandingPage() {
   const { eventId } = useParams(); 
   const [eventData, setEventData] = useState(null);
@@ -17,7 +19,7 @@ function LandingPage() {
     const fetchEvent = async () => {
       try {
         console.log("id",eventId);
-        const res = await fetch(`http://localhost:5000/api/events/${eventId}`);
+        const res = await fetch(`${apiUrl}/api/events/${eventId}`);
         const data = await res.json();
         console.log(data,"data");
         setEventData(data);

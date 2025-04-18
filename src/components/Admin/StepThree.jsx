@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/StepThree.css";
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
+const cloudinaryUrl = import.meta.env.VITE_CLOUDINARY_URL;
+
 
 const StepThree = () => {
   const [tickets, setTickets] = useState([]);
@@ -83,7 +86,7 @@ const StepThree = () => {
       imgData.append("cloud_name", "dazdngh4i");
 
       try {
-        const cloudRes = await fetch("https://api.cloudinary.com/v1_1/dazdngh4i/image/upload", {
+        const cloudRes = await fetch(`${cloudinaryUrl}`, {
           method: "POST",
           body: imgData,
         });
@@ -105,7 +108,7 @@ const StepThree = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/events", {
+      const res = await fetch(`${apiUrl}/api/events`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
