@@ -1,17 +1,23 @@
 .sidebar {
-  width: 220px;
+  width: 264px;
   background-color: white;
+  color: #D0D0DA;
   border-right: 1px solid #e2e8f0;
   height: 100vh;
   position: fixed;
   top: 70px;
   left: 0;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-  padding-top: 20px;
+  padding-top: 30px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 80px;
 }
 
 .logo {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   padding: 20px;
   color: #2563eb;
@@ -19,31 +25,64 @@
 
 .menu-list {
   list-style: none;
-  padding: 0;
+  padding: 10px;
   margin: 0;
 }
 
 .menu-item {
   display: flex;
   align-items: center;
+  font-size: 16px;
   padding: 12px 20px;
-  color: #475569;
-  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.3s;
+  white-space: nowrap;
 }
 
-.menu-item .icon {
-  margin-right: 12px;
-  font-size: 18px;
+.menu-item:hover {
+  background-color: #f4f4f4;
+  color: black;
 }
 
-.menu-item:hover,
 .menu-item.active {
-  background-color: #f1f5f9;
-  color: #2563eb;
+  background-color: #fff;
+  color: #0062ff;
 }
 
-.menu-item.bold {
-  font-weight: 600;
+.icon {
+  margin-right: 12px;
+}
+
+.label {
+  font-size: 16px;
+}
+
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  z-index: 2000;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
 }

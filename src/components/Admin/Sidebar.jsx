@@ -24,16 +24,15 @@ const menuItems = [
   { label: 'Accounts', icon: <FaWallet /> },
 ];
 
-const Sidebar = () => {
-  return (
-    <div className="sidebar">
+const Sidebar = ({ isOpen, onClose }) => (
+  <>
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <ul className="menu-list">
         {menuItems.map((item, index) => (
           <li
             key={index}
-            className={`menu-item ${item.label === 'Events' ? 'active' : ''} ${
-              item.label === 'Report' ? 'bold' : ''
-            }`}
+            className={`menu-item ${item.label === 'Events' ? 'active' : ''}`}
+            onClick={onClose} 
           >
             <span className="icon">{item.icon}</span>
             <span className="label">{item.label}</span>
@@ -41,7 +40,12 @@ const Sidebar = () => {
         ))}
       </ul>
     </div>
-  );
-};
+
+    <div
+      className={`sidebar-overlay ${isOpen ? 'active' : ''}`}
+      onClick={onClose}
+    />
+  </>
+);
 
 export default Sidebar;

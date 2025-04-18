@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/User/landingPage';
 import EventsList from './pages/Admin/EventPage';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/User/ProtectedRoute';
 import NotFound from './pages/NotFound';
 import CreateEvent from './pages/Admin/CreateEvent';
 
@@ -11,10 +11,9 @@ function App() {
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<LandingPage />} />
-
+        <Route path="/" element={<ProtectedRoute><EventsList /></ProtectedRoute>} />
         {/* Protected Admin Routes */}
-        <Route path="/event-list" element={<ProtectedRoute><EventsList /></ProtectedRoute>} />
+        <Route path="/:eventId" element={<LandingPage />} />
         <Route path="/create-event" element={<ProtectedRoute><CreateEvent /></ProtectedRoute>} />
 
         {/* Fallback Route */}

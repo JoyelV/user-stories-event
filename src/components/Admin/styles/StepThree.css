@@ -1,132 +1,191 @@
 .ticket-form-container {
-    padding: 30px 40px;
-    background-color: #f9faff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-left: 320px;
-    margin-top: 40px;
+  padding: 30px 40px;
+  background-color: #f9faff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 30px;
+  margin-top: 65px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.submit-error {
+  color: crimson;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.back-link {
+  color: #0062FF;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.section-label {
+  font-weight: bold;
+  color: #3B82F6;
+  margin-bottom: 16px;
+}
+
+.tickets-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.ticket-row {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ticket-type {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 350px;
+  max-width: 100%;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.ticket-type:hover,
+.ticket-type:focus {
+  border-color: #3B82F6;
+  outline: none;
+}
+
+.ticket-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100px;
+  max-width: 100%;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.ticket-input:hover,
+.ticket-input:focus {
+  border-color: #3B82F6;
+  outline: none;
+}
+
+.ticket-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-button {
+  background: #f3f4f6;
+  border: none;
+  width: 51px;
+  height: 41px;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.icon-button:hover {
+  background: #e2e8f0;
+}
+
+.settings-button svg {
+  color: #4b5563;
+}
+
+.delete-button svg {
+  color: #ef4444;
+}
+
+.create-ticket-button {
+  background-color: #3B82F6;
+  color: white;
+  width: 150px;
+  height: 43px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.button-group {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skip-btn,
+.primary-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  width: 150px;
+  max-width: 100%;
+}
+
+.skip-btn {
+  background-color: #9CA3AF;
+  color: white;
+}
+
+.primary-btn {
+  background-color: #3B82F6;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .ticket-row {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .back-link {
-    color: #0062FF;
-    font-size: 14px;
-    text-decoration: none;
-  }
-  
-  .section-label {
-    font-weight: bold;
-    color: #3B82F6;
-    margin-bottom: 16px;
+  .ticket-type,
+  .ticket-input {
+    width: 100%;
   }
 
   .tickets-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    gap: 16px; 
-    margin-bottom: 1rem;
-  }
-  
-  .ticket-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .ticket-type {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 350px;
-    transition: border-color 0.2s ease;
-  }
-  
-  .ticket-type:hover,
-  .ticket-type:focus {
-    border-color: #3B82F6; 
-    outline: none;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .ticket-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 100px;
-    transition: border-color 0.2s ease;
-  }
-  
-  .ticket-input:hover,
-  .ticket-input:focus {
-    border-color: #3B82F6; 
-    outline: none;
-  }
-  
-  
-  .ticket-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .icon-button {
-    background: #f3f4f6;
-    border: none;
-    width: 51px;
-    height: 41px;
-    padding: 6px;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease;
-  }
-  
-  .icon-button:hover {
-    background: #e2e8f0;
-  }
-  
-  .settings-button svg {
-    color: #4b5563; 
-  }
-  
-  .delete-button svg {
-    color: #ef4444; 
-  }
-  
-  
   .create-ticket-button {
-    background-color: #3B82F6;
-    color: white;
-    width: 150px;
-    height: 43px;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    margin-top: 10px;
-    cursor: pointer;
+    width: 50%;
   }
-  
+
   .button-group {
-    margin-top: 40px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  .skip-btn {
-    background-color: #9CA3AF;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    border: none;
-  }
-  
+
+  .skip-btn,
   .primary-btn {
-    background-color: #3B82F6;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    border: none;
+    width: 50%;
   }
-  
+
+  .ticket-form-container {
+    padding: 20px;
+    margin-left: 0;
+    margin-top: 30px;
+  }
+}

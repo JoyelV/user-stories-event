@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const EventContext = createContext();
 
@@ -7,11 +7,14 @@ export const EventProvider = ({ children }) => {
     title: "",
     date: "",
     startTime: "",
+    startPeriod: "AM",
     endTime: "",
-    venue: "",
-    address: "",
+    endPeriod: "AM",
+    venueName: "",
+    venueAddress: "",
     image: null,
     description: "",
+    tickets: [],
   });
 
   return (

@@ -1,53 +1,105 @@
-.sidebar {
+.sidemenu {
   width: 252px;
-  height: 683px;
+  height: 763px;
   background-color: #ffffff;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #e0e0e0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 20px 10px 20px 46px;
-}
-
-.sidebar-header {
-  background-color: #eaecf4;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: bold;
-  border-bottom: 1px solid #e0e0e0;
   border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #dcdcdc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 121px 10px 0px 46px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
-.sidebar-tabs {
+.sidemenu-header {
+  background-color: #eaecf4;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2e2e3a;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sidemenu-tabs {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.sidebar-tab {
+.sidemenu-tab {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 16px;
-  font-size: 6px;
-  color: #333;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #2e2e3a;
   cursor: pointer;
   border-bottom: 1px solid #f0f0f0;
   transition: background-color 0.2s ease;
 }
 
-.sidebar-tab:hover {
-  background-color: #f5f5f5;
-}
-
-.tab-arrow {
-  font-size: 12px;
-  color: #999;
+.sidemenu-tab:hover {
+  background-color: #f5f6fa;
 }
 
 .tab-text {
-  font-size: 12px;
-  padding: 0;
-  color: #2e2e3a;
-  font-weight: semi-bold;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tab-arrow {
+  font-size: 16px;
+  color: #999;
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  .sidemenu {
+    position: fixed;
+    top: 80px;
+    left: -260px;
+    width: 250px;
+    height: calc(100vh - 80px);
+    margin: 0;
+    z-index: 999;
+    transition: left 0.3s ease;
+  }
+
+  .sidemenu.open {
+    left: 0;
+  }
+
+  .sidemenu-overlay {
+    display: none;
+  }
+
+  .sidemenu-overlay.active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+  }
+}
+
+@media (max-width: 375px) {
+  .sidemenu {
+    top: 40px;
+    width: 220px;
+    height: calc(100vh - 40px);
+  }
+
+  .sidemenu-tab {
+    padding: 10px 14px;
+  }
+
+  .tab-text {
+    font-size: 12px;
+  }
+
+  .tab-arrow {
+    font-size: 14px;
+  }
 }

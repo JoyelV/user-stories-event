@@ -29,7 +29,7 @@
   
   .search-input-with-icon {
     width: 100%;
-    padding: 12px 12px 12px 40px; /* Left padding to make space for icon */
+    padding: 24px 12px 12px 40px; 
     border: none;
     outline: none;
     background-color: transparent;
@@ -37,3 +37,24 @@
     border-radius: 5px;
   }
   
+@media (max-width: 480px) {
+  .search-bar-container {
+    padding: 12px;
+  }
+
+  .search-bar-form {
+    height: 34px;
+    padding: 0 6px;
+    max-width: 50%;
+  }
+
+  .search-icon {
+    font-size: 16px;
+    left: 10px;
+  }
+
+  .search-input-with-icon {
+    font-size: 14px;
+    padding: 10px 10px 10px 36px;
+  }
+}
