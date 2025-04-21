@@ -1,27 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FiMoreVertical, FiEdit, FiTrash2 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import "./styles/EventCard.css";
-const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
-const EventCard = () => {
+const EventCard = ({ events }) => {
   const [showDropdownId, setShowDropdownId] = useState(null);
-  const [events, setEvents] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const res = await fetch(`${apiUrl}/api/events`);
-        const data = await res.json();
-        setEvents(data);
-      } catch (error) {
-        console.error("Failed to fetch events:", error);
-      }
-    };
-
-    fetchEvents();
-  }, []);
 
   return (
     <div className="event-grid">
@@ -87,7 +71,6 @@ const EventCard = () => {
               >
                 View Event Page
               </button>
-              
             </div>
           </div>
         );

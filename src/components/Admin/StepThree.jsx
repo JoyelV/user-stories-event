@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/StepThree.css";
+
 const apiUrl = import.meta.env.VITE_BACKEND_URL;
 const cloudinaryUrl = import.meta.env.VITE_CLOUDINARY_URL;
 
@@ -15,11 +16,13 @@ const StepThree = () => {
   const [errors, setErrors] = useState({});
   const [submitError, setSubmitError] = useState("");
   const { formData, setFormData } = useContext(EventContext);
+  const [isPublishing, setIsPublishing] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     setFormData((prev) => ({ ...prev, tickets }));
-  }, [tickets,setFormData]);
+  }, [tickets, setFormData]);
 
   const removeTicket = (id) => {
     setTickets(tickets.filter((ticket) => ticket.id !== id));
@@ -49,7 +52,7 @@ const StepThree = () => {
       newErrors.image = "Event image is required.";
     }
 
-    if(tickets.length===0){
+    if (tickets.length === 0) {
       newErrors.ticket = "Ticket data is required.";
     }
 
@@ -60,7 +63,11 @@ const StepThree = () => {
       if (!ticket.price || isNaN(ticket.price) || Number(ticket.price) <= 0) {
         newErrors[`price-${index}`] = "Price must be a positive number.";
       }
-      if (!ticket.quantity || isNaN(ticket.quantity) || Number(ticket.quantity) <= 0) {
+      if (
+        !ticket.quantity ||
+        isNaN(ticket.quantity) ||
+        Number(ticket.quantity) <= 0
+      ) {
         newErrors[`quantity-${index}`] = "Quantity must be a positive number.";
       }
     });
@@ -71,10 +78,9 @@ const StepThree = () => {
 
   const handlePublish = async () => {
     setSubmitError("");
+    if (!validateForm()) return;
 
-    if (!validateForm()) {
-      return;
-    }
+    setIsPublishing(true); 
 
     let imageUrl = "";
 
@@ -93,7 +99,8 @@ const StepThree = () => {
         imageUrl = cloudData.url;
       } catch (error) {
         setSubmitError("Image upload failed. Please try again.");
-        console.err(error);
+        console.error(error);
+        setIsPublishing(false);
         return;
       }
     } else {
@@ -112,19 +119,21 @@ const StepThree = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-    
+
       if (!res.ok) throw new Error("Failed to submit event");
-    
+
       const data = await res.json();
       console.log("Event saved:", data);
-    
+
       toast.success("Event published successfully!");
       navigate("/");
     } catch (err) {
       setSubmitError("Failed to publish event. Please try again later.");
       toast.error("Event publishing failed. Try again later.");
       console.error("Event submit failed:", err);
-    }    
+    } finally {
+      setIsPublishing(false); 
+    }
   };
 
   const handleBack = () => {
@@ -140,7 +149,10 @@ const StepThree = () => {
 
       <div className="tickets-header">
         <p className="section-label">Tickets</p>
-        <button className="create-ticket-button" onClick={() => setShowModal(true)}>
+        <button
+          className="create-ticket-button"
+          onClick={() => setShowModal(true)}
+        >
           Create Ticket
         </button>
       </div>
@@ -153,7 +165,9 @@ const StepThree = () => {
             value={ticket.type}
             onChange={(e) => updateTicket(ticket.id, "type", e.target.value)}
           />
-          {errors[`type-${index}`] && <p className="error">{errors[`type-${index}`]}</p>}
+          {errors[`type-${index}`] && (
+            <p className="error">{errors[`type-${index}`]}</p>
+          )}
 
           <input
             className="ticket-input"
@@ -161,15 +175,21 @@ const StepThree = () => {
             value={ticket.price}
             onChange={(e) => updateTicket(ticket.id, "price", e.target.value)}
           />
-          {errors[`price-${index}`] && <p className="error">{errors[`price-${index}`]}</p>}
+          {errors[`price-${index}`] && (
+            <p className="error">{errors[`price-${index}`]}</p>
+          )}
 
           <input
             className="ticket-input"
             placeholder="Quantity"
             value={ticket.quantity}
-            onChange={(e) => updateTicket(ticket.id, "quantity", e.target.value)}
+            onChange={(e) =>
+              updateTicket(ticket.id, "quantity", e.target.value)
+            }
           />
-          {errors[`quantity-${index}`] && <p className="error">{errors[`quantity-${index}`]}</p>}
+          {errors[`quantity-${index}`] && (
+            <p className="error">{errors[`quantity-${index}`]}</p>
+          )}
 
           <button className="icon-button settings-button" title="Settings">
             <FiSettings size={18} />
@@ -190,7 +210,13 @@ const StepThree = () => {
 
       <div className="button-group">
         <button className="skip-btn">Skip & Continue</button>
-        <button onClick={handlePublish} className="primary-btn">Publish Event</button>
+        <button
+          onClick={handlePublish}
+          className="primary-btn"
+          disabled={isPublishing}
+        >
+          {isPublishing ? "Publishing..." : "Publish Event"}
+        </button>
       </div>
 
       <TicketModal
@@ -199,7 +225,6 @@ const StepThree = () => {
         onSave={handleSaveTicket}
       />
       <ToastContainer position="top-right" autoClose={3000} />
-
     </div>
   );
 };
