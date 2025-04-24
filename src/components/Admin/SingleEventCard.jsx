@@ -78,7 +78,11 @@ const SingleEventCard = ({ event, showDropdownId, setShowDropdownId }) => {
         <button
           className="view-event-page-button"
           onClick={() =>
-            window.open(`/${event._id}`, "_blank", "noopener,noreferrer")
+            window.open(
+              `${window.location.origin}/${event._id}`,
+              "_blank",
+              "noopener,noreferrer"
+            )
           }
         >
           View Event Page
