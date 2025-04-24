@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { FiMoreVertical, FiEdit, FiTrash2 } from "react-icons/fi";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles/EventCard.css";
 
 const SingleEventCard = ({ event, showDropdownId, setShowDropdownId }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const totalTickets = event.tickets.reduce(
