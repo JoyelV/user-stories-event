@@ -5,6 +5,7 @@ import TopNavbar from "../../components/Admin/TopNavbar";
 import SearchBar from "../../components/Admin/SearchBar";
 import EventCard from "../../components/Admin/EventCard";
 import "./EventsList.css";
+import Skeleton from "react-loading-skeleton";
 
 const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -85,7 +86,9 @@ const EventsList = () => {
 
           {/* Event Cards */}
           {loading ? (
-            <div className="loading-message">Loading events...</div> // or a spinner
+            <div className="loading-message">
+              <Skeleton width={200} height={20} />
+            </div> 
           ) : (
             <EventCard events={currentEvents} />
           )}
