@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { FiMoreVertical, FiEdit, FiTrash2 } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import "./styles/EventCard.css";
 
 const SingleEventCard = ({ event, showDropdownId, setShowDropdownId }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const totalTickets = event.tickets.reduce((acc, ticket) => acc + ticket.quantity, 0);
-  const totalRevenue = event.tickets.reduce((acc, ticket) => acc + ticket.quantity * ticket.price, 0);
+  const totalTickets = event.tickets.reduce(
+    (acc, ticket) => acc + ticket.quantity,
+    0
+  );
+  const totalRevenue = event.tickets.reduce(
+    (acc, ticket) => acc + ticket.quantity * ticket.price,
+    0
+  );
 
   return (
     <div className="event-card">
@@ -69,12 +75,14 @@ const SingleEventCard = ({ event, showDropdownId, setShowDropdownId }) => {
           </button>
         </div>
 
-        <button
+        <a
+          href={`/${event._id}`}
+          target="_blank"
+          rel="noopener noreferrer"
           className="view-event-page-button"
-          onClick={() => navigate(`/${event._id}`)}
         >
           View Event Page
-        </button>
+        </a>
       </div>
     </div>
   );

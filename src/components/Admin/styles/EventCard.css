@@ -142,17 +142,21 @@
 }
 
 .view-event-page-button {
-  width: 100%;
-  background-color: #0066ff;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
   color: white;
-  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
   border: none;
-  padding: 4px 2px;
-  border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
-  width: 227px;
-  height: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.view-event-page-button:hover {
+  background-color: #0056b3;
 }
 
 .options-container {
