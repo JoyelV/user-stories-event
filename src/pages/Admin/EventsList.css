@@ -221,3 +221,10 @@
   color: black;
   border: 2px solid black;
 }
+
+.loading-message {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: #555;
+}

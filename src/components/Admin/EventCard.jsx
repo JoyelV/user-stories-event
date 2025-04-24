@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SingleEventCard from "./SingleEventCard"; // Import it
+import SingleEventCard from "./SingleEventCard"; 
 import "./styles/EventCard.css";
 
 const EventCard = ({ events }) => {

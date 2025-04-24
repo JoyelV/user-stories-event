@@ -13,7 +13,7 @@ const EventsList = () => {
   const [allEvents, setAllEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 6;
 
@@ -22,12 +22,15 @@ const EventsList = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
+        setLoading(true);
         const res = await fetch(`${apiUrl}/api/events`);
         const data = await res.json();
         setAllEvents(data);
         setFilteredEvents(data);
       } catch (error) {
         console.error("Failed to fetch events:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -36,7 +39,7 @@ const EventsList = () => {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    console.log(searchQuery,"searched :")
+    console.log(searchQuery, "searched :");
     const filtered = allEvents.filter((event) =>
       event.title.toLowerCase().includes(query.toLowerCase())
     );
@@ -81,7 +84,11 @@ const EventsList = () => {
           </div>
 
           {/* Event Cards */}
-          <EventCard events={currentEvents} />
+          {loading ? (
+            <div className="loading-message">Loading events...</div> // or a spinner
+          ) : (
+            <EventCard events={currentEvents} />
+          )}
 
           {/* Pagination */}
           <div className="pagination">
