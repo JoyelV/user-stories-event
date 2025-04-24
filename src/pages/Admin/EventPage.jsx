@@ -14,12 +14,14 @@ const EventsList = () => {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true); 
   const eventsPerPage = 6;
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEvents = async () => {
+      setLoading(true); 
       try {
         const res = await fetch(`${apiUrl}/api/events`);
         const data = await res.json();
@@ -27,7 +29,9 @@ const EventsList = () => {
         setFilteredEvents(data);
       } catch (error) {
         console.error("Failed to fetch events:", error);
-      } 
+      } finally {
+        setLoading(false); 
+      }
     };
 
     fetchEvents();
@@ -35,7 +39,7 @@ const EventsList = () => {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    console.log(searchQuery, "searched :");
+    console.log(searchQuery);
     const filtered = allEvents.filter((event) =>
       event.title.toLowerCase().includes(query.toLowerCase())
     );
@@ -79,37 +83,43 @@ const EventsList = () => {
             </div>
           </div>
 
-          {/* Event Cards */}
-          <EventCard events={currentEvents} />
+          {/* Show loading spinner*/}
+          {loading ? (
+            <div className="loading-spinner">Loading Events...</div>
+          ) : (
+            <EventCard events={currentEvents} />
+          )}
 
           {/* Pagination */}
-          <div className="pagination">
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              className="pagination-btn"
-              disabled={currentPage === 1}
-            >
-              «
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => (
+          {!loading && (
+            <div className="pagination">
               <button
-                key={i}
-                className={`pagination-btn ${
-                  currentPage === i + 1 ? "active" : ""
-                }`}
-                onClick={() => handlePageChange(i + 1)}
+                onClick={() => handlePageChange(currentPage - 1)}
+                className="pagination-btn"
+                disabled={currentPage === 1}
               >
-                {i + 1}
+                «
               </button>
-            ))}
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              className="pagination-btn"
-              disabled={currentPage === totalPages}
-            >
-              »
-            </button>
-          </div>
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  className={`pagination-btn ${
+                    currentPage === i + 1 ? "active" : ""
+                  }`}
+                  onClick={() => handlePageChange(i + 1)}
+                >
+                  {i + 1}
+                </button>
+              ))}
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                className="pagination-btn"
+                disabled={currentPage === totalPages}
+              >
+                »
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

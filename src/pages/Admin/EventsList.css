@@ -77,6 +77,13 @@
   border-radius: 6px;
 }
 
+.loading-spinner {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 2rem;
+  color: #555;
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -220,11 +227,4 @@
   background-color: green;
   color: black;
   border: 2px solid black;
-}
-
-.loading-message {
-  font-size: 1.2rem;
-  text-align: center;
-  margin: 2rem 0;
-  color: #555;
 }
