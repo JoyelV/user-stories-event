@@ -5,7 +5,6 @@ import TopNavbar from "../../components/Admin/TopNavbar";
 import SearchBar from "../../components/Admin/SearchBar";
 import EventCard from "../../components/Admin/EventCard";
 import "./EventsList.css";
-import Skeleton from "react-loading-skeleton";
 
 const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -14,7 +13,6 @@ const EventsList = () => {
   const [allEvents, setAllEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 6;
 
@@ -23,16 +21,13 @@ const EventsList = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        setLoading(true);
         const res = await fetch(`${apiUrl}/api/events`);
         const data = await res.json();
         setAllEvents(data);
         setFilteredEvents(data);
       } catch (error) {
         console.error("Failed to fetch events:", error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     fetchEvents();
@@ -85,13 +80,7 @@ const EventsList = () => {
           </div>
 
           {/* Event Cards */}
-          {loading ? (
-            <div className="loading-message">
-              <Skeleton width={200} height={20} />
-            </div> 
-          ) : (
-            <EventCard events={currentEvents} />
-          )}
+          <EventCard events={currentEvents} />
 
           {/* Pagination */}
           <div className="pagination">
